@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#ifndef MYLIBRARY_H
-#define MYLIBRARY_H
+#ifndef LIBFT_H
+#define LIBFT_H
 #define NULL 0
+
+#include <unistd.h>
+#include <stdlib.h>
 
 typedef unsigned long size_t;
 
