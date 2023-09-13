@@ -12,20 +12,23 @@
 
 #include <libft.h>
 
-void *memmove(void *str1, const void *str2, size_t n)
+void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
-	char *ptr1 = (char*)str1;
-	char *ptr2 = (char*)str2;
-	size_t i;
+	size_t	i;
 
-	if (!ptr1 || !ptr2)
+	if (!str1 || !str2)
 		return (NULL);
-	i = 0;
-	while (ptr1[i] || ptr2[i] && i < n)
-	{
-		ptr1[i] = ptr2[i];
-		i++;
+	if (str1 > str2)
+	{	
+		i = (int)n -1;
+		while (i--)
+			*(char *)(str1 + i) = *(char *)(str2 + i);
 	}
-	ptr1[i] = 0;
-	return ((void*)ptr1);
+	else
+	{
+		i = 0;
+		while (i++ < n)
+			*(char *)(str1 + i) = *(char *)(str2 + i);
+	}
+	return (str1);
 }
