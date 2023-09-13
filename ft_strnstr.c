@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 20:45:24 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/11 20:45:24 by juan-cas         ###   ########.fr       */
+/*   Created: 2023/09/12 20:38:11 by juan-cas          #+#    #+#             */
+/*   Updated: 2023/09/12 20:38:11 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int ft_isalnum(int c)
+char *ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);	
+	size_t i;
+	size_t j;
+
+	i = 0;
+	j = 0;
+	if (!big || !little)
+		return (NULL);
+	if (!little || !little[0])
+		return ((char*)big);
+	while (big[i] && len--)
+	{
+		j = 0;
+		while (big[j + i] && little[j] &&
+				i + j < len && big[i + j] == little[j])
+			j++;
+		if (!little[j])
+			return ((char*)(big + i));
+		i++;
+	}
+	return (NULL);
 }
