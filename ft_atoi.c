@@ -10,19 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdio.h>
+#include "libft.h"
 
-int ft_atoi(char *str)
+int ft_atoi(const char *str)
 {
 	int i;
 	int sig;
+	int	result;
+	char *str1 = (char *) str;
 
 	i = 0;
 	sig = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
+	result = 0;
+	while ((str1[i] >= 9 && str1[i] <= 13) || (str1[i] == ' '))
 		i++;
-	if (str[i] == '-')
+	if (str1[i] == '-' || str1[i] == '+')
 	{
-		sig = -1;
+		if (str1[i] == '-')
+			sig = -1;
+		i++;
 	}
+	while (str1[i] >= '0' && str1[i] <= '9')
+	{
+		result = result * 10 + str1[i] - '0';
+		i++;
+	}
+	return (result * sig);
+}
+
+int main()
+{
+    char str[] = "    -1234asda123";
+    int result = ft_atoi(str);
+
+    printf("the str to convert is %s\n", str);
+    printf("the result is: %d\n", result);
+    return (0);
 }

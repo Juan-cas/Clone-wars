@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
-#define NULL 0
+# define LIBFT_H
+//# define NULL 0
 
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-typedef unsigned long size_t;
+//typedef unsigned long int size_t;
 
 size_t howbig(void);
 int	ft_isalpha(int c);
@@ -36,8 +36,18 @@ void	*ft_memmove(void *str1, const void *str2, size_t n);
 void *ft_memcpy(void *dest, const void *src, size_t count);
 void *ft_memchr(const void *str, int c, size_t n);
 void *ft_memset(void *s, int c, size_t n);
-int ft_atoi(char *str);
+int ft_atoi(const char *str);
 void ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t number, size_t size);
 int ft_isascii(int c);
-int memcmp(const void *buffer1, const void *buffer2, size_t count);
+//int memcmp(const void *buffer1, const void *buffer2, size_t count);
+
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
+
+t_list				*ft_lstnew(void const *content, size_t content_size);
+
+#endif

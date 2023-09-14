@@ -14,13 +14,12 @@
 
 char *ft_itoa(int n)
 {
-	int i;
-	int j;
-	int k;
 	char *str;
 
-	i = 0;
-	j = 0;
-	k = n;
+	if (n == '\0')
+		return (NULL);
+	if (n > 9)
+		n / 10;
+	
 	
 }
