@@ -15,11 +15,22 @@
 char *ft_itoa(int n)
 {
 	char *str;
+	int i;
 
+	i = 0;
 	if (n == '\0')
 		return (NULL);
-	if (n > 9)
+	if (n < 0)
+	{
+		str[i] = '-';
+		n = n * -1;
+		i++;
+	}
+	while (n > 9)
+	{
 		n / 10;
-	
-	
+		str[i] = n % 10 + '0';
+		i++;
+	}	
+	return (str);
 }

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+//#include <libft.h>
+#include <stdio.h>
 
 void ft_bzero(void *s, size_t n)
 {
@@ -19,7 +20,18 @@ void ft_bzero(void *s, size_t n)
 
 	i = 0;
 	sb = (char*)s;
-	while (sb[i] && i++ < n)
-		sb[i] = '0';
-	return (s);
+	while (i < n)
+	{
+		sb[i] = '\0';
+		i++;
+	}
+}
+
+int main (void)
+{
+	char str[] = "Hello World";
+	size_t n = 5;
+	ft_bzero(str, n);
+	printf("the string is: %s\n", str);
+	return (0);
 }
