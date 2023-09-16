@@ -1,60 +1,19 @@
-S = src/
-O = obj/
-I = inc/
-D = dep/
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+NAME = libft.a
+SRC = *.c
+OBJ = $(SRC:.c=.o)
+RM = rm -f
 
-CFLAGS += -I$I
-
-include settings.mk
-
-OBJ = $(SRC:$S%=$O%.o)
-DEP = $(SRC:$S%=$D%.d)
-
-RM = /bin/rm -f
-RMDIR = /bin/rmdir
-
-.PHONY: all clean fclean re
+$(NAME): $(OBJ)
+	ar	rcs	$(NAME) $(OBJ)
 
 all: $(NAME)
 
-$O:
-    @mkdir $@
-
-$(OBJ): | $O
-
-$(OBJ): $O%.o: $S%
-    $(CC) $(CFLAGS) -c $< -o $@
-
-$D:
-    @mkdir $@
-
-$(DEP): | $D
-
-$(DEP): $D%.d: $S%
-    $(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
-
-$(NAME): $(OBJ)
-    $(CC) $(LDFLAGS) $^ -o $@
-
-cleanobj:
-    $(RM) $(wildcard $(OBJ))
-
-cleanobjdir: cleanobj
-    $(RMDIR) $O
-
-cleandep:
-    $(RM) $(wildcard $(DEP))
-
-cleandepdir: cleandep
-    $(RMDIR) $D
-
-clean: cleanobjdir cleandepdir
+clean:
+	$(RM)	$(OBJ)
 
 fclean: clean
-    $(RM) $(NAME)
+	$(RM)	$(NAME)
 
 re: fclean all
-
--include $(DEP)
-
-include custom_rules.mk

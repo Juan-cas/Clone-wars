@@ -14,15 +14,13 @@
 # define LIBFT_H
 //# define NULL 0
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -58,7 +56,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(char c);
 int		ft_toupper(char c);
-
 
 //t_list	*ft_lstnew(void const *content, size_t content_size);
 

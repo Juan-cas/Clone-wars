@@ -30,8 +30,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/swamer/Documents/Clone wars",
-      "program": "c:/Users/swamer/Documents/Clone wars/build/Debug/outDebug",
+      "cwd": "c:/Users/swamer/Documents/Clone wars/libft",
+      "program": "c:/Users/swamer/Documents/Clone wars/libft/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
