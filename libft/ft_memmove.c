@@ -15,20 +15,26 @@
 void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
 	size_t	i;
+	char *stra;
+	char *strb;
 
+	stra = (char *)str1;
+	strb = (char *)str2;
+	i = 0;
 	if (!str1 || !str2)
 		return (NULL);
 	if (str1 > str2)
 	{
-		i = (int)n -1;
-		while (i--)
-			*(char *)(str1 + i) = *(char *)(str2 + i);
+		while (n-- > 0)
+			stra[n] = strb[n];
 	}
 	else
 	{
-		i = 0;
-		while (i++ < n)
-			*(char *)(str1 + i) = *(char *)(str2 + i);
+		while (i < n)
+		{
+			stra[i] = strb[i];
+			i++;
+		}
 	}
 	return (str1);
 }

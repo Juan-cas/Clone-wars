@@ -12,18 +12,14 @@
 
 #include "libft.h"
 
-int	memcmp(const void *buffer1, const void *buffer2, size_t count)
+int	ft_memcmp(const void *buffer1, const void *buffer2, size_t count)
 {
-	size_t			i;
-	unsigned char	*buffera;
-	unsigned char	*bufferb;
-
-	buffera = (unsigned char *) buffer1;
-	bufferb = (unsigned char *) buffer2;
-	while (count-- && buffera++ && bufferb++)
+	while (count--)
 	{
-		if (buffera != bufferb)
-			return ((int)buffera - (int)bufferb);
+		if (*(unsigned char *)buffer1 != *(unsigned char *)buffer2)
+			return (*(unsigned char *)buffer1 - *(unsigned char *)buffer2);
+		buffer1++;
+		buffer2++;
 	}
-	return ((int)buffera - (int)bufferb);
+	return (0);
 }

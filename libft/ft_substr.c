@@ -12,43 +12,37 @@
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
 	char	*ptr;
 
 	if (!s || len == 0)
 		return (NULL);
-	ptr = (char *)malloc(sizeof(len + 1));
+	if (ft_strlen(s) < len)
+		len = 0;
+	if (ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	ptr = malloc(sizeof(char) * (len + 1));
 	if (!ptr)
-		return (NULL);
-	i = start;
-	j = 0;
-	while (j < len && *s != '\0')
-	{
-		ptr[j] = s[i];
-		i++;
-		j++;
-	}
-	ptr[j] = '\0';
+		return (0);
+	ft_strlcpy(ptr, s + start, len + 1);
 	return (ptr);
 }
 
 /*int main (void)
 {
 	char *str = "Hello World";
-	unsigned int start = 2;
-	size_t len = 5;
+	unsigned int start = 1;
+	size_t len = 10;
 	char *result = ft_substr(str, start, len);
-	printf("normal:%s\n", substr(str, start, len));
+	printf("normal:%s\n", str);
 
 
 	if (result)
 	{
 		printf("substring: %s\n", result);
-		free(result);
 	}
 	else
 	printf("Error: the string was not found.\n");
