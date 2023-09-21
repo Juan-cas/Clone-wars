@@ -6,7 +6,7 @@
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 21:26:01 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/12 21:26:01 by juan-cas         ###   ########.fr       */
+/*   Updated: 2023/09/21 03:36:51 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t number, size_t size)
 	str = (void *)malloc(number * size);
 	if (!str)
 		return (NULL);
-	ft_bzero (str, number * size);
+	ft_memset(str, 0, number * size);
 	return (str);
 }
 

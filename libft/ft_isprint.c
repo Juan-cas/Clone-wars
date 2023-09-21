@@ -6,16 +6,15 @@
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 04:12:50 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/07 04:12:50 by juan-cas         ###   ########.fr       */
+/*   Updated: 2023/09/21 03:48:41 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
-	if (c >= ' ' && c <= '~')
-		return (1);
-	else
-		return (0);
+	if (c >= 32 && c <= 126)
+		return (c);
+	return (0);
 }

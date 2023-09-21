@@ -6,7 +6,7 @@
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 02:32:19 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/13 02:32:19 by juan-cas         ###   ########.fr       */
+/*   Updated: 2023/09/21 03:52:13 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *str1, const void *str2, size_t n)
 	stra = (char *)str1;
 	strb = (char *)str2;
 	i = 0;
-	if (!str1 || !str2)
+	if (!str1 && !str2)
 		return (NULL);
 	if (str1 > str2)
 	{

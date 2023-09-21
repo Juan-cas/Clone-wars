@@ -6,7 +6,7 @@
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 21:28:29 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/08 21:28:29 by juan-cas         ###   ########.fr       */
+/*   Updated: 2023/09/21 05:18:37 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //# define NULL 0
 
 # include <stddef.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -29,7 +30,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
-int		ft_isprint(char c);
+int		ft_isprint(int c);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *str, int c, size_t n);
 int		ft_memcmp(const void *buffer1, const void *buffer2, size_t count);
@@ -48,6 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t sizedest);
 size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
