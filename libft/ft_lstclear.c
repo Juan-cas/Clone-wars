@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 20:14:11 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/23 22:27:39 by juan-cas         ###   ########.fr       */
+/*   Created: 2023/09/23 22:00:45 by juan-cas          #+#    #+#             */
+/*   Updated: 2023/09/23 22:27:28 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*big_list;
+	t_list	*holder;
+	t_list	*checker;
 
-	big_list = (t_list *)malloc(sizeof(t_list) * 1);
-	if (!big_list)
-		return (0);
-	big_list->content = content;
-	big_list->next = NULL;
-	return (big_list);
+	if (lst && *lst && del)
+	{
+		checker = (t_list *)*lst;
+		while (checker)
+		{
+			holder = checker->next;
+			ft_lstdelone(checker, del);
+			checker = holder;
+		}
+		*lst = NULL;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/17 18:14:56 by juan-cas          #+#    #+#              #
-#    Updated: 2023/09/17 18:14:56 by juan-cas         ###   ########.fr        #
+#    Updated: 2023/09/23 23:45:56 by juan-cas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ SOURCES = \
 	ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 	ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c
-#BSOURCES = \
+BSOURCES = \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJECTS = $(SOURCES:.c=.o)
-#BOBJECTS = $(BSOURCES:.c=.o)
+BOBJECTS = $(BSOURCES:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -34,8 +34,8 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	$(AR) -r $@ $?
 
-#bonus: $(OBJECTS) $(BOBJECTS)
-#	$(AR) -r $(NAME) $?
+bonus: $(OBJECTS) $(BOBJECTS)
+	$(AR) -r $(NAME) $?
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?
