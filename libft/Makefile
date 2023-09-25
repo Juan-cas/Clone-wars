@@ -6,11 +6,10 @@
 #    By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/17 18:14:56 by juan-cas          #+#    #+#              #
-#    Updated: 2023/09/23 23:45:56 by juan-cas         ###   ########.fr        #
+#    Updated: 2023/09/25 16:49:49 by juan-cas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-	
 NAME = libft.a
 SOURCES = \
 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -21,18 +20,24 @@ SOURCES = \
 	ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c
 BSOURCES = \
-	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 OBJECTS = $(SOURCES:.c=.o)
 BOBJECTS = $(BSOURCES:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+AR = ar
+ARFLAGS = -r
+
+RM = rm -rf
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) -r $@ $?
+	$(AR) $(ARFLAGS) $@ $?
 
 bonus: $(OBJECTS) $(BOBJECTS)
 	$(AR) -r $(NAME) $?
@@ -41,10 +46,10 @@ bonus: $(OBJECTS) $(BOBJECTS)
 	$(CC) -c $(CFLAGS) $?
 
 clean:
-	rm -f $(OBJECTS)
+	$(RM) $(OBJECTS) $(BOBJECTS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME) $(BOBJECTS)
 
 re: fclean all
 

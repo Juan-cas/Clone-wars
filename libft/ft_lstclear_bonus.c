@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juan-cas <juan-cas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 22:34:18 by juan-cas          #+#    #+#             */
-/*   Updated: 2023/09/23 23:45:17 by juan-cas         ###   ########.fr       */
+/*   Created: 2023/09/23 22:00:45 by juan-cas          #+#    #+#             */
+/*   Updated: 2023/09/24 23:05:02 by juan-cas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	t_list	*holder;
+	t_list	*checker;
 
-	if (!lst || !f)
-		return (NULL);
-	new_elem = ft_lstnew(f(lst->content));
-	if (!new_elem)
-		return (NULL);
-	new_lst = new_elem;
-	lst = lst->next;
-	while (lst)
+	if (lst && *lst && del)
 	{
-		new_elem = ft_lstnew(f(lst->content));
-		if (!new_elem)
+		checker = (t_list *)*lst;
+		while (checker)
 		{
-			ft_lstclear(&new_lst, del);
-			break ;
+			holder = checker->next;
+			ft_lstdelone(checker, del);
+			checker = holder;
 		}
-		lst = lst->next;
-		ft_lstadd_back(&new_lst, new_elem);
+		*lst = NULL;
 	}
-	return (new_lst);
 }
